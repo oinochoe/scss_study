@@ -1,18 +1,28 @@
 @charset "utf-8";
+// 인자로 최소 너비, 마진, 플래그, column 개수를 받는다.
 @mixin n-columns($min-width, $gutter, $last-equal: false, $max-cols: 5) {
     .items {
+        // flex는 너무 하위 브라우저 대응까지는 하지 않도록 user settings(json)에 세팅해둠
         display: flex;
         flex-wrap: wrap;
-        margin-left: -$gutter;
-        margin-top: -$gutter;
+        margin-left: -$gutter; // 전체적으로 아이템 전체에 레프트가 있으므로 컨테이너를 왼쪽으로 움직입니다.
+        margin-top: -$gutter; // 전체적으로 아이템 전체에 탑값이 있으므로 컨테이너를 위쪽으로 움직입니다.
 
         .item {
+            /* flex-grow 설정을 통해서 정렬을 합니다. (기본값 1 1 0) grow, shrink, basis를 뜻함.
+             * flex grow가 1이므로 늘어날 수 있는 영역으로 다 늘어난 상태.
+             * (현재 shirnk가 0이므로 컨테이너가 작아져도 item이 영향받지 않습니다.)
+             * basis를 설정하여 기본크기를 설정합니다.
+             */
             flex: 1 0 $min-width;
-            margin-left: $gutter;
-            margin-top: $gutter;
+            margin-left: $gutter; // 아이템 전체적으로 개별 마진
+            margin-top: $gutter; // 아이템 전체적으로 개별 마진
 
+            // 만약 플래그가 true라면
             @if $last-equal {
+                // 2부터 시작됩니다. 2,3,4,5
                 @for $i from 2 through $max-cols {
+                    // 미디어쿼리 설정을 위한 계산
                     $screen-width: ($min-width * $i)+ ($gutter * $i);
                     $column-width: (100% / $i);
                     @media (min-width: $screen-width) {
@@ -20,6 +30,7 @@
                     }
                 }
 
+                // 마지막 한번 더
                 $column-width: (100% / $max-cols);
                 @media (min-width: $min-width*$max-cols) {
                     min-width: calc(#{$column-width} - #{$gutter});
@@ -29,6 +40,7 @@
     }
 }
 
+// 인클루드로 재사용
 @include n-columns(200px, 10px, true, 5);
 
 .items {
