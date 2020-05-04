@@ -1,6 +1,7 @@
-.items { display: flex; flex-wrap: wrap; margin-left: -10px; margin-top: -10px; }
+@charset "UTF-8";
+.items { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-left: -10px; margin-top: -10px; }
 
-.items .item { flex: 1 0 200px; margin-left: 10px; margin-top: 10px; }
+.items .item { /* flex-grow 설정을 통해서 정렬을 합니다. (기본값 1 1 0) grow, shrink, basis를 뜻함. flex grow가 1이므로 늘어날 수 있는 영역으로 다 늘어난 상태. (현재 shirnk가 0이므로 컨테이너가 작아져도 item이 영향받지 않습니다.) basis를 설정하여 기본크기를 설정합니다. */ -ms-flex: 1 0 200px; flex: 1 0 200px; margin-left: 10px; margin-top: 10px; }
 
 @media (min-width: 420px) { .items .item { max-width: calc(50% - 10px); } }
 
