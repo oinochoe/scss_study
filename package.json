@@ -1,0 +1,22 @@
+{
+  "name": "scss_study",
+  "version": "1.0.0",
+  "description": "# auto prefix 설정 값 ```markdown \"> 1%\", \"ie 10\", \"last 1 chrome version\", \"last 1 firefox version\" ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oinochoe/scss_study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oinochoe/scss_study/issues"
+  },
+  "homepage": "https://github.com/oinochoe/scss_study#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
