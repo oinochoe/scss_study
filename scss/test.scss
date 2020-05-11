@@ -7,3 +7,32 @@
 
 // 컴파일되지 않는 주석
 /* 컴파일되는 주석 */
+
+/* @at-root */
+.section {
+    $width: 100px;
+    $height: 200px;
+    width: $width;
+    height: $height;
+    .item {
+        width: $width;
+        height: $height;
+    }
+    @at-root .box {
+        width: $width;
+        height: $height;
+    }
+}
+
+/* 중첩된 속성 */
+.box {
+    font: {
+        weight: bold;
+        size: 10px;
+        family: sans-serif;
+    }
+    margin: {
+        top: 10px;
+        left: 20px;
+    }
+}
